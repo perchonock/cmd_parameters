@@ -2,21 +2,21 @@ __author__ = 'adm'
 
 import argparse
 import sys
+
 a = sys.argv
 parser = argparse.ArgumentParser()
+parser.add_argument('-num', type=int, required=True)
+parser.add_argument('-stro', type=str)
+parser.add_argument('-smile', action='store_true')
+parser.add_argument('pyfile', nargs='?')
+#args = parser.parse_args("-num 5 -smile -stro qq".split())
+args = parser.parse_args(a)
+print(args.pyfile)
+if args.stro != None:
+    print((args.stro+"\n")*args.num, end='')
+else:
+    print(args.num)
+if args.smile:
+    print(":)")
 
-parser.add_argument('-case')
-parser.add_argument('nm')
-b = parser.parse_args(['rnm', "-case", "lower"])
-
-parser = argparse.ArgumentParser(description='Process some integers.')
-parser.add_argument('integers', metavar='N', type=int, nargs='+',
-                   help='an integer for the accumulator')
-parser.add_argument('--sum', dest='accumulate', action='store_const',
-                   const=sum, default=max,
-                   help='sum the integers (default: find the max)')
-
-args = parser.parse_args(['1', '2', '3', '4'])
-
-print(args)
 
